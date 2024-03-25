@@ -1,0 +1,50 @@
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+</head>
+<body>
+    <script>
+        /*
+        Дано тризначне число, яке надае користувач, потрибно визначити:
+
+            Чи правда, що всі цифри однакові?
+            Чи є серед цифр цифри однакові?
+        */
+        let check = true;//значення для зпуску циклу
+
+        while (check) {
+            let numbetFromUser = prompt("Введіть будь яке трьохзначне число:");
+            let strLength = numbetFromUser.length;
+
+            if (strLength <= 3) {//перевірка довжини рядка
+                let checkingForTightness = numbetFromUser[0] === numbetFromUser[1] && numbetFromUser[1] === numbetFromUser[2];
+
+                if (checkingForTightness) {//перевірка співпадіння всіх чисел
+                    console.log("Всі цифри співпали");
+                    check = false;
+                }
+
+                if (!checkingForTightness) {//перевірка співпадіння окремих чисел
+                    let verificationOfIndividualNumbers = numbetFromUser[0] === numbetFromUser[1] || numbetFromUser[0] === numbetFromUser[2] || numbetFromUser[1] === numbetFromUser[2];
+                    if (!verificationOfIndividualNumbers) {
+                        console.log("Жодного співпадіння");
+                        check = false;
+                    } else {
+                        console.log("Деякі цифри співпадають");
+                        check = false;
+                    }
+                }
+            } else {// пропонує повторити введення, якщо його довжина була більше 3 символів
+                alert("Має бути три числа!!! Формат '123'");
+                check = true;
+            }
+        }
+</script>
+</body>

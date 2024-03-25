@@ -1,0 +1,78 @@
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+</head>
+<body>
+    <script>
+        /*
+            Основне завдання, cтворити скрипт яки повинен виконувати наступне:
+
+            запитати у користувача рік народження;
+            запитати в нього, в якому місті він живе;
+            запитати його улюблений вид спорту.
+
+            При натисканні на ОК показуємо вікно, де має бути відображена наступна інформація:
+
+            його вік;
+            якщо користувач вкаже Київ, Вашингтон чи Лондон, то показати йому повідомлення - "Ти живеш у столиці..."
+            і на місце точок підставляємо країну, столицею якої є місто. Інакше показуємо йому “ти живеш у місті…”,
+            де місце точок – введене місто.
+
+        */
+
+        let yearBirth = prompt("Коли ти народився?");
+        let kindSport = prompt("Твій олюблений вид спорту?");
+        let placeResidence = prompt("Де ти живеш?");
+        let now = new Date();
+        let capitalСity = ["Київ","Вашингтон","Лондон"];
+        let sport = ["Плавання","Біг","Більярд"];
+        let checkResult;
+        let stopExecution = true;
+        let shouldDisplayAlert = true;
+
+
+        if (yearBirth === null) {//перевірка чи ввів користувач дату народження
+            alert("Шкода, що Ви не захотіли ввести свою дату народження");
+            stopExecution = false;
+        } else if (kindSport === null) {//перевірка чи ввів користувач олюблений вид спорту
+            alert("Шкода, що Ви не захотіли ввести свій олюблений вид спорту");
+            stopExecution = false;
+        } else if (placeResidence === null) {//перевірка чи ввів користувач місце проживання
+            alert("Шкода, що Ви не захотіли ввести своє місто проживання");
+            stopExecution = false;
+        }
+
+        while(stopExecution){//якщо користувач увів всі потрібні дані, запускається цикл
+
+            for (let citi of capitalСity){//перевірка де проживає користувач
+                if (placeResidence === citi){
+                    checkResult = "столиці";
+                    break;
+                }else {
+                    checkResult = "місті";
+                    break;
+                }
+            }
+
+            for (let item of sport) {// перевірка чи є користувач чемпіоном
+                if (kindSport === item) {
+                    alert(`Круто! Хочеш стати Адам Смешр?`);
+                    shouldDisplayAlert = false;
+                    break; // Припиняє виконання циклу
+                }
+            }
+
+            if (shouldDisplayAlert) {
+                alert(`Тобі ${now.getFullYear() - yearBirth} роки, ти живеш у ${checkResult}`);
+            }
+            break;
+        }
+</script>
+</body>
